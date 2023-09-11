@@ -1,0 +1,9 @@
+1. Quản lý công việc
+2. Quản lý thời gian
+3. Quản lý tiền
+
+
+- Đăng nhập
+- Đăng ký
+- Quên / Đổi mật khẩu
+- Home (Màn hình vào 3 task)
