@@ -40,7 +40,7 @@ public class HandleController {
 		}
 		
 		if (acc != null && (acc.getUsername() != null && !"".equals(acc.getUsername()))) {
-			Account checkAcc = accountService.findById(acc.getUsername());
+			Account checkAcc = accountService.findById1(acc.getUsername());
 			if (checkAcc.getUsername() != null) {
 				model.addFlashAttribute("tabLogin", false);
 				model.addFlashAttribute("tabRegister", true);

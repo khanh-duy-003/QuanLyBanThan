@@ -17,6 +17,11 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public Account findById(String username) {
+		return accountRe.findById(username).get();
+	}
+	
+	@Override
+	public Account findById1(String username) {
 		Optional<Account> account = accountRe.findById(username);
 		return account.isEmpty() ? new Account() : account.get();
 	}
