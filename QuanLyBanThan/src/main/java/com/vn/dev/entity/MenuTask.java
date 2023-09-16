@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.vn.dev.constant.TableConstant;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,23 +16,23 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "MENU_TASK")
-public class MenuTask implements Serializable{
+@Table(name = TableConstant.MENU_TASK)
+public class MenuTask implements Serializable {
 	
 	@Id
 	@Column(name = "MENU_ID")
-	String menuId;
+	private String menuId;
 	
 	@Column(name = "NAME_TASK")
-	String nameTask;
+	private String nameTask;
 	
 	@Column(name = "IMAGE")
-	String image;
+	private String image;
 	
 	@Column(name = "URL")
-	String url;
+	private String url;
 	
 	@Column(name = "DESCRIBE")
-	String describe;
+	private String describe;
 
 }

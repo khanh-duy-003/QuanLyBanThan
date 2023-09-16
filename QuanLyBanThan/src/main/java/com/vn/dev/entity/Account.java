@@ -9,6 +9,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
+import com.vn.dev.constant.TableConstant;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -16,8 +18,8 @@ import lombok.EqualsAndHashCode;
 @Data
 @Entity
 @EqualsAndHashCode(callSuper=false)
-@Table(name = "ACCOUNTS")
-public class Account extends CreatedCommon implements Serializable {
+@Table(name = TableConstant.ACCOUNT)
+public class Account extends CommonCreated implements Serializable {
 	
 	@Id
 	@NotBlank(message = "Tên đăng nhập không được để trống")
