@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -34,8 +35,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			try {
 				Account user = accountService.findById(username);
 				String password = pe.encode(user.getPassword());
-				String[] roles = {};
-				return User.withUsername(username).roles(roles).password(password).build();
+				return User.withUsername(username).password(password)
+						.authorities(new SimpleGrantedAuthority("ROLE_USER"))
+						.accountLocked(user.getActive()).disabled(user.getLdapFlag()).build();
 			} catch (NoSuchElementException e) {
 				throw new UsernameNotFoundException(username + "not found!");
 			}

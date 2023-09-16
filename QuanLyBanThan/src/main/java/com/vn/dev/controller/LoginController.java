@@ -1,5 +1,8 @@
 package com.vn.dev.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +20,6 @@ public class LoginController {
 //		model.addAttribute("messageLogin", "Vui lòng đăng nhập!");
 		
 		// Đăng ký
-		model.addAttribute("item", new Account());
 		model.addAttribute("createAccount", new Account());
 		
 		// init Tab

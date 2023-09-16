@@ -6,6 +6,8 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.vn.dev.entity.Account;
@@ -14,19 +16,12 @@ import com.vn.dev.service.AccountService;
 @Controller
 public class HandleController {
 	
+	 private static final String MESSENGER = "messenger";
+	
 	@Autowired
 	AccountService accountService;
 
-	@RequestMapping("/forgotPassword")
-	public String forgotPassword() {
-		return "handle/forgotPassword.html";
-	}
-
-	@RequestMapping("/change")
-	public String changepass() {
-		return "handle/changePassword.html";
-	}
-	
+	//Handle đăng ký
 	@RequestMapping("/registerHandel")
 	public String registerHandel(RedirectAttributes model,Account acc,@Validated @ModelAttribute("sv") Account form,Errors errors) {
 		
@@ -40,7 +35,7 @@ public class HandleController {
 		}
 		
 		if (acc != null && (acc.getUsername() != null && !"".equals(acc.getUsername()))) {
-			Account checkAcc = accountService.findById1(acc.getUsername());
+			Account checkAcc = accountService.findById(acc.getUsername());
 			if (checkAcc.getUsername() != null) {
 				model.addFlashAttribute("tabLogin", false);
 				model.addFlashAttribute("tabRegister", true);
@@ -56,5 +51,45 @@ public class HandleController {
 		model.addFlashAttribute("tabRegister", true);
 		
 		return "redirect:/login";
+	}
+	
+	// Get form quên passwword
+	@RequestMapping("/forgotPassword")
+	public ModelAndView forgotPassword() {
+		ModelAndView mav = new ModelAndView("handle/forgotPassword.html");
+		
+		return mav;
+	}
+	
+	// Handle quên passwword
+	@RequestMapping("/forgotPassword/handle")
+	public ModelAndView handelForgotPassword(@RequestParam(value = "username", required = true) String username,
+			@RequestParam(value = "email", required = true) String email) {
+		ModelAndView mav = new ModelAndView("handle/forgotPassword.html");
+
+		Account account = accountService.findById1(username);
+		
+		if (account != null && account.getUsername() != null) {
+			if (email.equals(account.getEmail())) {
+				account.setPassword("123");
+				accountService.save(account);
+				mav.addObject(MESSENGER , "Đổi mật khẩu thành công");
+			} else {
+				mav.addObject(MESSENGER , "Email không đúng");
+				return mav;
+			}
+		} else {
+			mav.addObject(MESSENGER , "Tài khoản không tồn tại");
+			return mav;
+		}
+			
+		return mav;
+	}
+	
+
+	// Get form đổi password
+	@RequestMapping("/change")
+	public String changepass() {
+		return "handle/changePassword.html";
 	}
 }

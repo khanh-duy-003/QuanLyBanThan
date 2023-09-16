@@ -10,35 +10,39 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @SuppressWarnings("serial")
 @Data
 @Entity
-@Table(name = "Accounts")
-public class Account implements Serializable {
+@EqualsAndHashCode(callSuper=false)
+@Table(name = "ACCOUNTS")
+public class Account extends CreatedCommon implements Serializable {
 	
 	@Id
 	@NotBlank(message = "Tên đăng nhập không được để trống")
-	@Column(name = "Username")
+	@Column(name = "USERNAME")
 	private String username;
 	
 	@NotBlank(message = "Mật khẩu không được để trống")
-	@Column(name = "Password")
+	@Column(name = "PASSWORD")
 	private String password;
 	
-	@Column(name = "Fullname")
+	@Column(name = "FULL_NAME")
 	private String fullName;
 	
 	@NotBlank(message = "Email không để được trống")
 	@Email(message = "Email không đúng định dạng")
-	@Column(name = "Email")
+	@Column(name = "EMAIL")
 	private String email;
 	
-	@Column(name = "Phone")
+	@Column(name = "PHONE")
 	private String phone;
 	
-	@Column(name = "Active")
+	@Column(name = "ACTIVE")
 	private Boolean active;
 	
-
+	@Column(name = "LDAP_FLAG")
+	private Boolean ldapFlag;
+	
 }

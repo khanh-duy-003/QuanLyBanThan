@@ -7,28 +7,30 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @SuppressWarnings("serial")
-@Data
+@Getter
+@Setter
 @Entity
-@Table(name = "Menutask")
-public class MenuTask implements Serializable {
+@Table(name = "MENU_TASK")
+public class MenuTask implements Serializable{
 	
 	@Id
-	@Column(name = "Menu_Id")
+	@Column(name = "MENU_ID")
 	String menuId;
 	
-	@Column(name = "Name_Task")
+	@Column(name = "NAME_TASK")
 	String nameTask;
 	
-	@Column(name = "Image")
+	@Column(name = "IMAGE")
 	String image;
 	
-	@Column(name = "Url")
+	@Column(name = "URL")
 	String url;
 	
-	@Column(name = "Describe")
+	@Column(name = "DESCRIBE")
 	String describe;
 
 }
