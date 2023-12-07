@@ -1,7 +1,5 @@
 package com.vn.dev.service.impl;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,12 +18,6 @@ public class AccountServiceImpl implements AccountService {
 		return accountRe.findById(username).get();
 	}
 	
-	@Override
-	public Account findById1(String username) {
-		Optional<Account> account = accountRe.findById(username);
-		return account.isEmpty() ? new Account() : account.get();
-	}
-
 	@Override
 	public void save(Account account) {
 		accountRe.save(account);

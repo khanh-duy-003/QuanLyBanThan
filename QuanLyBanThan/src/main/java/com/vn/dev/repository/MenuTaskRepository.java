@@ -1,9 +1,8 @@
 package com.vn.dev.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-
+import com.vn.dev.config.DbRepository;
 import com.vn.dev.entity.MenuTask;
 
-public interface MenuTaskRepository extends JpaRepository<MenuTask, String>{
+public interface MenuTaskRepository extends DbRepository<MenuTask, String>{
 
 }

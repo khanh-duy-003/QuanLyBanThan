@@ -17,7 +17,7 @@ public class MenuTaskServiceImpl implements MenuTaskService{
 
 	@Override
 	public List<MenuTask> findAll() {
-		return menuTaskRepo.findAll();
+		return (List<MenuTask>) menuTaskRepo.findAll();
 	}
 
 }

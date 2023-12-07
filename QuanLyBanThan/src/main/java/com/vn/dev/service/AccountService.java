@@ -6,7 +6,7 @@ public interface AccountService {
 	
 	public Account findById(String username);
 	
-	public Account findById1(String username);
+//	public Account findById1(String username);
 
 	public void save(Account account);
 

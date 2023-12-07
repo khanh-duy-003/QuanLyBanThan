@@ -8,12 +8,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.vn.dev.constant.UrlConstant;
+import com.vn.dev.entity.QuanLyCongViec;
 import com.vn.dev.entity.QuanLyCongViecDetail;
 import com.vn.dev.service.QuanLyCongViecDetailService;
 import com.vn.dev.service.QuanLyCongViecService;
 
 @Controller
-@RequestMapping("/task/qlcv")
+@RequestMapping(value = UrlConstant.URL_TASK + UrlConstant.QLCV)
 public class TaskQuanLyCongViecController {
 	
 	@Autowired
@@ -22,13 +24,17 @@ public class TaskQuanLyCongViecController {
 	@Autowired
 	QuanLyCongViecDetailService qlcvDetailService;
 	
-	@RequestMapping("/list")
+	@RequestMapping(value = UrlConstant.LIST)
 	public ModelAndView init() {
 		ModelAndView mav = new ModelAndView("task-quanLyCongViec/qlcv-list.html");
 		
 		Date dateToday = new Date();
 		
-		List<QuanLyCongViecDetail> a =  qlcvDetailService.findAll();
+		QuanLyCongViec qlcv = qlcvService.findByTodayDate(dateToday);
+		
+		if (qlcv != null && qlcv.getId() != null) {
+			List<QuanLyCongViecDetail> a =  qlcvDetailService.getQuanLyCongViecDetailByQlcvId(qlcv.getId());			
+		}
 		
 		return mav;
 	}

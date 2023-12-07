@@ -1,9 +1,8 @@
 package com.vn.dev.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-
+import com.vn.dev.config.DbRepository;
 import com.vn.dev.entity.Account;
 
-public interface AccountRepository extends JpaRepository<Account, String> {
+public interface AccountRepository extends DbRepository<Account, String> {
 
 }

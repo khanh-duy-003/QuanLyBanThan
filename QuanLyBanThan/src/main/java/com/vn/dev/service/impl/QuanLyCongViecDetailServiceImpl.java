@@ -16,8 +16,8 @@ public class QuanLyCongViecDetailServiceImpl implements QuanLyCongViecDetailServ
 	QuanLyCongViecDetailRepository qlcvDetailRepo;
 
 	@Override
-	public List<QuanLyCongViecDetail> findAll() {
-		return qlcvDetailRepo.findAll();
+	public List<QuanLyCongViecDetail> getQuanLyCongViecDetailByQlcvId(Long qlcvId) {
+		return qlcvDetailRepo.getQuanLyCongViecDetailByQlcvId(qlcvId);
 	}
 
 }

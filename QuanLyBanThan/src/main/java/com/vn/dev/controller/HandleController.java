@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.vn.dev.constant.UrlConstant;
 import com.vn.dev.entity.Account;
 import com.vn.dev.service.AccountService;
 
@@ -22,7 +23,7 @@ public class HandleController {
 	AccountService accountService;
 
 	//Handle đăng ký
-	@RequestMapping("/registerHandel")
+	@RequestMapping(value = UrlConstant.REGISTER_HANDEL)
 	public String registerHandel(RedirectAttributes model,Account acc,@Validated @ModelAttribute("sv") Account form,Errors errors) {
 		
 		if(errors.hasErrors()) {
@@ -54,7 +55,7 @@ public class HandleController {
 	}
 	
 	// Get form quên passwword
-	@RequestMapping("/forgotPassword")
+	@RequestMapping(value = UrlConstant.FORGOT_PASSWORD)
 	public ModelAndView forgotPassword() {
 		ModelAndView mav = new ModelAndView("handle/forgotPassword.html");
 		
@@ -62,12 +63,12 @@ public class HandleController {
 	}
 	
 	// Handle quên passwword
-	@RequestMapping("/forgotPassword/handle")
+	@RequestMapping(value = UrlConstant.FORGOT_PASSWORD +  UrlConstant.HANDLE)
 	public ModelAndView handelForgotPassword(@RequestParam(value = "username", required = true) String username,
 			@RequestParam(value = "email", required = true) String email) {
 		ModelAndView mav = new ModelAndView("handle/forgotPassword.html");
 
-		Account account = accountService.findById1(username);
+		Account account = accountService.findById(username);
 		
 		if (account != null && account.getUsername() != null) {
 			if (email.equals(account.getEmail())) {

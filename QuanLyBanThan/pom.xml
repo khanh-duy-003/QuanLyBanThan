@@ -15,8 +15,9 @@
 	<description>Ung dung Quan ly ban than</description>
 	<properties>
 		<java.version>17</java.version>
-		
-		<spar-wings-spring-data-chunk.version>0.38</spar-wings-spring-data-chunk.version>
+		<spring-data-mirage.version>0.11.1.RELEASE</spring-data-mirage.version>
+		<spar-wings-spring-data-chunk.version>0.35</spar-wings-spring-data-chunk.version>
+		<main.basedir>${project.basedir}</main.basedir>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -61,7 +62,28 @@
 		    <groupId>nz.net.ultraq.thymeleaf</groupId>
 		    <artifactId>thymeleaf-layout-dialect</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>2.4.2</version>
+		</dependency>
 		
+        <dependency>
+			<groupId>jp.xet.springframework.data.mirage</groupId>
+			<artifactId>spring-data-mirage</artifactId>
+			<version>${spring-data-mirage.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>jp.xet.spar-wings</groupId>
+			<artifactId>spar-wings-spring-data-chunk</artifactId>
+			<version>${spar-wings-spring-data-chunk.version}</version>
+		</dependency>
+		
+		<dependency>
+		  	<groupId>org.springframework.data</groupId>
+		  	<artifactId>spring-data-commons</artifactId>
+		  	<version>1.10.0.RELEASE</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -80,5 +102,12 @@
 			</plugin>
 		</plugins>
 	</build>
-
+  
+	<repositories>
+		<repository>
+			<id>local-repository</id>
+			<name>Local Repository</name>
+			<url>file://${main.basedir}/repository</url>
+		</repository>
+	</repositories>
 </project>

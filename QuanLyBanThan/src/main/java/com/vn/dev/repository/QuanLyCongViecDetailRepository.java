@@ -1,9 +1,14 @@
 package com.vn.dev.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
 
+import org.springframework.data.repository.query.Param;
+
+import com.vn.dev.config.DbRepository;
 import com.vn.dev.entity.QuanLyCongViecDetail;
 
-public interface QuanLyCongViecDetailRepository extends JpaRepository<QuanLyCongViecDetail, String> {
+public interface QuanLyCongViecDetailRepository extends DbRepository<QuanLyCongViecDetail, Long> {
+	
+	List<QuanLyCongViecDetail> getQuanLyCongViecDetailByQlcvId(@Param("qlcvId") Long qlcvId);
 
 }

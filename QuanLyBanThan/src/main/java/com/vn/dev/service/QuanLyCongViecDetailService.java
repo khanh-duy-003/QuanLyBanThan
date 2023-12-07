@@ -6,6 +6,6 @@ import com.vn.dev.entity.QuanLyCongViecDetail;
 
 public interface QuanLyCongViecDetailService {
 	
-	List<QuanLyCongViecDetail> findAll();
+	List<QuanLyCongViecDetail> getQuanLyCongViecDetailByQlcvId(Long qlcvId);
 
 }
