@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout_index.html}" layout:fragment="body">
+<body>
+	<section id="portfolio" class="portfolio sections-bg">
+		<div class="container" data-aos="fade-up">
+
+			<div class="section-header">
+				<h2>Trình quản lý</h2>
+			</div>
+
+			<div class="portfolio-isotope" data-aos-delay="100">
+				<div class="row gy-4 portfolio-container">
+					<div class="col-xl-4 col-md-6 portfolio-item filter-app"
+						th:each="menu : ${menuTask}">
+						<div class="portfolio-wrap">
+							<a th:href="@{${menu.url} + '/list'}"><img
+								th:src="@{'/static/images/' + ${menu.image}}" class="img-fluid"
+								alt=""></a>
+							<div class="portfolio-info" style="height: 150px">
+								<h4>
+									<a th:href="@{${menu.url} + '/list'}" title="More Details">[[${menu.nameTask}]]</a>
+								</h4>
+								<p>[[${menu.describe}]]</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

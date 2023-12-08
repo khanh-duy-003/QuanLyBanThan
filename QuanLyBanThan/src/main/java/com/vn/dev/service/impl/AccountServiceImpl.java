@@ -1,5 +1,7 @@
 package com.vn.dev.service.impl;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +17,12 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public Account findById(String username) {
-		return accountRe.findById(username).get();
+		
+		Optional<Account> acc = accountRe.findById(username);
+		if (acc.isPresent())
+			return acc.get();
+		else
+			return new Account();
 	}
 	
 	@Override

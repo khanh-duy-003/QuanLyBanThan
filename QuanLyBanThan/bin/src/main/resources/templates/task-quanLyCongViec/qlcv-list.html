@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout_qlcv.html}" layout:fragment="body">
+<body style="background-color: #99FF99;">
+	<section id="topbar" class="topbar d-flex align-items-center" style="height: 60px">
+	    <div class="container d-flex justify-content-center justify-content-md-between">
+	      <div class="contact-info d-flex align-items-center">
+	        <a th:href="@{/pk/home}">
+	        	<i class="bi bi-house d-flex align-items-center ms-4"><span>PK DEV</span></i>
+	     	</a>
+	      </div>
+	      <div class="contact-info d-flex align-items-center">
+	        <h1 style="color: #FFFF00;"><strong>QUẢN LÝ CÔNG VIỆC</strong></h1>
+	      </div>
+	      <div class="social-links d-none d-md-flex align-items-center">
+	        <span>Xin chào: <strong>[[${#request.remoteUser}]]</strong></a></span>
+	      </div>
+	    </div>
+ 	</section>
+  
+  	<section class="intro" style="padding: 20px 0; height: auto;">
+       <div class="row justify-content-center">
+         <div class="col-12">
+           <div class="card shadow-2-strong" style="background-color: #f5f7fa;">
+             <div class="card-body">
+               <div class="table-responsive">
+                 <table class="table table-borderless mb-0">
+                     <tr>
+                       	<th scope="col" style="text-align: center; width: 20%"><a>&lt;&lt;</a></th>
+                       	<th scope="col" style="text-align: center">
+	                    	<div class="input-group input-daterange" id="fromToDate" calendar ng-model="vm.fromToDate">
+					            <input type="text" class="form-control input-sm" ng-model="vm.bookingFromDate">
+				          	</div>
+						</th>
+                       	<th scope="col" style="text-align: center;width: 20%"><a>&gt;&gt;</a></th>
+                     </tr>
+                 </table>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+	</section>
+ 	
+	<!-- Table list -->
+	<section class="intro" style="padding: 10px 0; height: auto;">
+       <div class="row justify-content-center">
+         <div class="col-12">
+           <div class="card shadow-2-strong" style="background-color: #f5f7fa;">
+             <div class="card-body">
+               <div class="table-responsive">
+                 <table class="table table-borderless mb-0" style="width: 100%;">
+                   <thead>
+                     <tr>
+                       <th scope="col">
+                         <div class="form-check">
+                           <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                         </div>
+                       </th>
+                       <th scope="col">THAO TÁC</th>
+                       <th scope="col">TÊN CÔNG VIỆC</th>
+                       <th scope="col">NƠI LÀM VIỆC</th>
+                       <th scope="col">THỜI GIAN BẮT ĐẦU</th>
+                       <th scope="col">THỜI GIAN KẾT THÚC</th>
+                       <th scope="col">MÔ TẢ</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <tr>
+                       <th scope="row">
+                         <div class="form-check">
+                           <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1" checked/>
+                         </div>
+                       </th>
+                       <td>
+                         <button type="button" class="btn btn-danger btn-sm px-3">
+                           <i class="fas fa-times"></i>
+                         </button>
+                       </td>
+                       <td></td>
+                       <td style="white-space: normal;">Tiger Nixonádadasddddddddddddđ444444</td>
+                       <td style="white-space: normal;">System 4444444444444444444Architect</td>
+                       <td style="white-space: normal;">644444444444444444444441</td>
+                       <td style="white-space: normal;">Edin44444444444444444444444444444444 4444444444444444444444444444444burgh</td>
+                       
+                     </tr>
+                   </tbody>
+                 </table>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+	</section>
+
+</body>
+</html>
