@@ -1,0 +1,1 @@
+select * from QUAN_LY_CONG_VIEC WHERE TODAY_DATE = /*todayDate*/
