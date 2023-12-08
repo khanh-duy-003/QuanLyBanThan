@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.vn.dev.constant.UrlConstant;
 import com.vn.dev.entity.QuanLyCongViec;
 import com.vn.dev.entity.QuanLyCongViecDetail;
+import com.vn.dev.service.CommonService;
 import com.vn.dev.service.QuanLyCongViecDetailService;
 import com.vn.dev.service.QuanLyCongViecService;
 
@@ -24,11 +25,15 @@ public class TaskQuanLyCongViecController {
 	@Autowired
 	QuanLyCongViecDetailService qlcvDetailService;
 	
+	@Autowired
+	CommonService commonService;
+	
 	@RequestMapping(value = UrlConstant.LIST)
 	public ModelAndView init() {
 		ModelAndView mav = new ModelAndView("task-quanLyCongViec/qlcv-list.html");
 		
-		Date dateToday = new Date();
+		Date dateToday = commonService.getDayMonthYear();
+		
 		
 		QuanLyCongViec qlcv = qlcvService.findByTodayDate(dateToday);
 		
