@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -28,7 +29,7 @@ public class TaskQuanLyCongViecController {
 	@Autowired
 	CommonService commonService;
 	
-	@RequestMapping(value = UrlConstant.LIST)
+	@GetMapping(value = UrlConstant.LIST)
 	public ModelAndView init() {
 		ModelAndView mav = new ModelAndView("task-quanLyCongViec/qlcv-list.html");
 		
